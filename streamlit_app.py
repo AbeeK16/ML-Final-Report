@@ -6,12 +6,12 @@ st.set_page_config(page_title="ML Project Report", layout="wide")
 # ======================
 # TITLE
 # ======================
-st.title("# ML-Project")
+st.title("ML-Project")
 
 # ======================
 # INTRODUCTION / BACKGROUND
 # ======================
-st.header("## Introduction/Background")
+st.header("Introduction/Background")
 st.markdown("""
 Capturing information about the world is the ultimate goal of any data prediction model- first observe current conditions, then develop reasoning about the world. Data collection comes in all forms, from text input to video recordings. To capture the world in 3D as it actually exists is a challenge on its own, with 2D media not being sufficient to actually model real environments. Hence, LiDAR sensors have been the primary technology used to collect dimensional data in order to simulate the real world environment because they capture and encode distance from source to surroundings objects, beating out the compressed data that traditional 2D videos have traditionally captured.
 """)
@@ -19,7 +19,7 @@ Capturing information about the world is the ultimate goal of any data predictio
 # ======================
 # PROBLEM DEFINITION
 # ======================
-st.header("## Problem Definition")
+st.header("Problem Definition")
 st.markdown("""
 LiDAR is at the forefront of technology used to digitally navigate the real world. Applications range from simple AR on mobile devices to physically navigating autonomous vehicles quickly and safely [1]. Further applications of point clouds can assist retaining physical information that could be lost in the scanning process [2].  However, the data amassed by these sensors necessitate additional methods to actually make use of it [3]. Techniques utilizing segmentation can help with optimizing classification and identifying local point cloud structures [4]. We seek to utilize point clouds to normalize data and equalize sensors’ perceptions of the world to build an accurate mental model in the computational system. We also seek to quickly identify and classify objects using data about the 3D world. To verify our solutions to these problems we will track quantitative metrics that give us insight into model accuracy and speed.
 """)
@@ -27,7 +27,7 @@ LiDAR is at the forefront of technology used to digitally navigate the real worl
 # ======================
 # METHODS OVERVIEW
 # ======================
-st.header("## Methods Overview")
+st.header("Methods Overview")
 st.markdown("""
 Data Preprocessing:
 - Point Cloud Normalization 
@@ -46,7 +46,7 @@ Machine Learning Models/Algorithms:
 # ======================
 # DATA PREPROCESSING METHOD
 # ======================
-st.header("## 1 Data Preprocessing Method")
+st.header("1 Data Preprocessing Method")
 st.code("""
 def pc_normalize(pc): 
 
@@ -65,7 +65,7 @@ pc_normalize(pc) normalizes the point clouds by centering it at the origin and s
 # ======================
 # CHOSEN MODELS
 # ======================
-st.header("## 3 Chosen Models")
+st.header("3 Chosen Models")
 
 st.markdown("""
 For our first model, we chose the open source PointNet++ model (repo attached within our directories) on our LiDar point cloud data. It is a supervised model that is widely popular for training on LiDar data for classification purposes. It also works best with large, diverse data sets, which is the case with the data of our choice. Our goal for this project was to capture local features and relationships in LiDAR point clouds (semantic segmentation), a key feature of PointNet++ among it's other strengths.
@@ -82,7 +82,7 @@ For our third model, we selected PointMLP, a supervised MLP-based model designed
 # ======================
 # RESULTS AND DISCUSSION
 # ======================
-st.header("## Results and Discussion")
+st.header("Results and Discussion")
 st.markdown("""
 Quantitative Metrics: 
 - F1 Score
