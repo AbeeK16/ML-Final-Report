@@ -100,15 +100,16 @@ Why our models performed well and what are the next steps we plan to take?
 st.markdown("""
 The results across classification, part segmentation, and semantic segmentation show that PointNet++ consistently outperforms PointNet. When classifying on the ModelNet dataset, PointNet++, especially the MSG model, achieves the highest accuracy (92.8%), which shows that learning local structure leads to better overall shape recognition. For part segmentation, PointNet++ has higher instance and class IoU, demonstrating higher ability to capture small details that separate object parts. On S3DIS semantic segmentation, PointNet++ raises class-average IoU from 43.7% to 53.5%, showing more consistent performance across different categories. Overall, the results show that learning local features at multiple scales leads to more accurate and reliable 3D understanding than the original PointNet.
 
-Results for second model here
-
-Results for third model here
 """)
 
 st.image("PointNet_Accuracy_Over_Training_Epochs.png", caption="Accuracy over Epochs")
 
 st.markdown("""
 All in all, the PointNet++ model is **solid but not stellar**. We are currently seeing ~0.99 train instance accuracy against the ~0.92 test instance accuracy (best ~0.929) with class accuracy ~0.90, which points to decent learning plus a modest generalization gap and likely class imbalance (where: instance > class). It is perfecetly usable; however, some classes are clearly underperfoming and later epochs do not improve on the earlier best, suggesting we are overfitting or under-augmenting for our lighter point clouds. (i.e., sparser samples with fewer points per object and more local noise, so the train distribution is denser than what we evaluate on).
+""")
+
+st.markdown("""
+The PointNet2 model shows solid performance across 155 training epochs, with the macro F1 score improving from 0.8335 initially to 0.8910 at the end, peaking at 0.8940 around epoch 129. The weighted F1 score follows a similar pattern, starting at 0.8750 and reaching 0.9212 by the final epoch, with a best result of 0.9259 at epoch 126. The gap between macro and weighted scores (roughly 3-4 percentage points) suggests the model performs better on more common classes in the dataset. Precision and recall remain well-balanced throughout training, with both metrics hovering around 0.88-0.89 for macro averages and 0.92-0.93 for weighted averages in later epochs, indicating the model doesn't heavily favor one over the other. Test accuracy stabilizes around 0.92, aligning well with the F1 scores. Performance plateaus around epoch 125 with minimal gains afterward, and occasional dips like those seen around epochs 78-80 are quickly recovered, suggesting healthy training without significant overfitting. Overall, the convergence pattern and balanced metrics indicate the model has likely reached its performance limit for this architecture and dataset.
 """)
 
 st.markdown("""
