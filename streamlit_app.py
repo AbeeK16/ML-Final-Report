@@ -94,7 +94,7 @@ Quantitative Metrics:
 """)
 
 st.markdown("""
-## [Why our models performed well and what are the next steps we plan to take?] ![important](https://img.shields.io/badge/-IMPORTANT-red)
+Why our models performed well and what are the next steps we plan to take?
 """)
 
 st.markdown("""
@@ -130,19 +130,19 @@ st.markdown("""
 # ======================
 # GANTT CHART
 # ======================
-st.header("## Gantt Chart")
+st.header("Gantt Chart")
 st.image("gantt.jpeg", caption="Gantt Chart")
 
 # ======================
 # CONTRIBUTION TABLE
 # ======================
-st.header("## Contribution Table")
+st.header("Contribution Table")
 st.image("contribution.jpg", caption="Contribution Table")
 
 # ======================
 # PROJECT GOALS
 # ======================
-st.header("## Project Goals")
+st.header("Project Goals")
 st.markdown("""
 - Latency: Minimize time taken to classify an object
   - Preprocessing techniques can help minimize latency ensuring objects get recognized within a few moments of being seen
@@ -153,7 +153,7 @@ st.markdown("""
 # ======================
 # EXPECTED RESULTS
 # ======================
-st.header("## Expected Results")
+st.header("Expected Results")
 st.markdown("""
 - A working object classification system that can classify objects with high accuracy
 - Measure improvements in performance from data preprocessing
@@ -162,7 +162,7 @@ st.markdown("""
 # ======================
 # REFERENCES
 # ======================
-st.header("## References")
+st.header("References")
 st.markdown("""
 [1] C. Vishnu, J. Khandelwal, C. K. Mohan and C. L. Reddy, “EVAA–Exchange Vanishing Adversarial Attack on LiDAR Point Clouds in Autonomous Vehicles,” IEEE Trans. Geosci. Remote Sens., vol. 61, 2023, Art. no. 5703410, doi: 10.1109/TGRS.2023.3292372.
 
@@ -176,7 +176,7 @@ st.markdown("""
 # ======================
 # REPO STRUCTURE
 # ======================
-st.header("## Repo Structure")
+st.header("Repo Structure")
 st.markdown("""
 `/classification_ModelNet40/`: Training and evaluation pipeline for ModelNet40 point-cloud classification.
 
