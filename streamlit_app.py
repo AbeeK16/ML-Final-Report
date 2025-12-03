@@ -127,7 +127,8 @@ DGCNN is architecturally different from the other two. It builds a dynamic k-NN 
 Cross model comparison.
 Putting everything together, all three models reach high overall accuracy, but they differ in how they treat minority classes. PointNet++ with SSL is a strong baseline and benefits from pretraining, but its macro precision and macro F1 lag its accuracy, which means some classes are still underperforming. PointMLP gives us the best balance of the three: highest accuracy and noticeably stronger macro precision and macro F1, so it is the best single model if we care about both overall performance and fairness across classes. DGCNN adds diversity by focusing on local edges and is especially helpful for shapes where relative part positions matter more than global shape alone.
 
-Next steps.
+Next steps:
+
 Across all models, macro F1 is still several points below overall accuracy, so the main next step is to improve performance on minority and “difficult” classes rather than just chasing a small bump in accuracy. Concretely, we would like to
 
 use class-weighted cross entropy or focal loss, and possibly oversample rare classes, to directly target macro precision and macro F1,
