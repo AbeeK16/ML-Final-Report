@@ -111,7 +111,7 @@ st.markdown("""
 - Overfitting observed in lighter/sparser point clouds (train ~0.99 vs test ~0.92)
 """)
 
-st.image("images/PointNet_Accuracy_Over_Training_Epochs.png", caption="Accuracy over Epochs")
+st.image("PointNet_Accuracy_Over_Training_Epochs.png", caption="Accuracy over Epochs")
 
 st.markdown("""
 **Next Steps:**  
@@ -126,13 +126,13 @@ st.markdown("""
 # GANTT CHART
 # ======================
 st.header("Gantt Chart")
-st.image("images/gantt.jpeg", caption="Project Gantt Chart")
+st.image("gantt.jpeg", caption="Project Gantt Chart")
 
 # ======================
 # CONTRIBUTION TABLE
 # ======================
 st.header("Contribution Table")
-st.image("images/contribution.jpg", caption="Team Contributions")
+st.image("contribution.jpg", caption="Team Contributions")
 
 # ======================
 # PROJECT GOALS
