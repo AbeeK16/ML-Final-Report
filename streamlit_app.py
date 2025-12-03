@@ -113,6 +113,16 @@ The PointNet++ model shows solid performance across 155 training epochs, with th
 """)
 
 st.markdown("""
+PointMLP
+The PointMLP model maintains consistently strong performance over its training period, with macro F1 scores starting around 0.860 and improving steadily to roughly 0.900 by the final epochs. Weighted F1 mirrors this pattern, increasing from the upper 0.88 range to about 0.93, indicating that the model performs well not only on common classes but also handles minority categories more effectively than PointNet++. Precision and recall remain balanced, both stabilizing in the 0.89–0.91 macro range and 0.93–0.94 weighted range by the end of training. Test accuracy hovers around 0.93, showing minimal divergence from the weighted F1, which suggests strong consistency between training and evaluation. Unlike PointNet++, the performance plateau arrives slightly earlier, around epoch 120, with less variance between checkpoints. The smoother convergence curve implies that PointMLP is better regularized and benefits from its MLP-based feature extraction, which likely captures more stable global representations of the point clouds.
+
+DGCNN
+The DGCNN model delivers competitive results overall, with macro F1 gradually improving from around 0.84 to the high 0.88s and weighted F1 reaching just above 0.91 by the final epochs. The smaller gap between macro and weighted scores (around 2–3 percentage points) indicates the model generalizes more uniformly across classes compared to PointNet++. Precision and recall remain well-aligned throughout training, both increasing in parallel and stabilizing around 0.88–0.89 macro and 0.91–0.92 weighted. Test accuracy settles close to 0.92, consistent with the F1 trends. Training curves show that DGCNN converges somewhat slower than PointMLP, likely due to its reliance on dynamic graph updates, but it compensates with better robustness to local geometric noise. The results suggest that DGCNN’s edge-based feature learning helps preserve fine-grained structural relationships between neighboring points, giving it a small advantage on classes that depend on local spatial patterns rather than global shape cues.
+
+
+""")
+
+st.markdown("""
 We compared three point cloud classifiers: PointNet++, PointMLP, and DGCNN. Our main metrics are overall accuracy, macro precision, and macro F1. Because the dataset is class imbalanced, macro precision and macro F1 matter a lot, since they weight each class equally and show whether a model is doing well on rare classes and not just the common ones.
 
 PointNet++
