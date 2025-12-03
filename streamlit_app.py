@@ -113,19 +113,34 @@ The PointNet++ model shows solid performance across 155 training epochs, with th
 """)
 
 st.markdown("""
-**The next steps we are intending to take are as follows:**
+We compared three point cloud classifiers: PointNet++, PointMLP, and DGCNN. Our main metrics are overall accuracy, macro precision, and macro F1. Because the dataset is class imbalanced, macro precision and macro F1 matter a lot, since they weight each class equally and show whether a model is doing well on rare classes and not just the common ones.
 
-- *Strengthen augmentation*: random z-rotations, scaling, jitter, and point dropout to increase pose and density variance. This will build invariance to missing points and viewpoint changes, improving robustness across densities.
+PointNet++
+For our run of PointNet++ with semi-supervised fine tuning, test accuracy quickly gets into the low 90% range. Train accuracy is a bit higher, which gives us a modest generalization gap, but nothing extreme. Macro precision and macro F1 are a few points below the overall accuracy. This tells us that PointNet++ is handling the frequent classes fairly well, but performance on rarer or harder classes still lags behind. In other words, the model is solid, but there is room to improve how evenly it behaves across all categories.
 
-- *Loss rebalancing*: add class weighting or focal loss to lift rare/weak classes. This will reduce bias toward frequent classes.
+PointMLP.
+PointMLP ends up with the best overall numbers among the three models. Its test accuracy is slightly higher than PointNet++ and its macro precision and macro F1 are also higher. The gap between train and test accuracy is smaller, which suggests that our regularization and augmentation are working reasonably well. The smaller gap between accuracy and macro F1 indicates that PointMLP spreads its performance more fairly across classes and is less biased toward the majority ones.
 
-- *Regularization and Training Schedule*: weight decay, dropout, label smoothing, early stopping on best value, and a cosine LR with warmup. This will lower variance and stabilize training so we keep the best-generalizing checkpoint instead of overfitting late.
+DGCNN.
+DGCNN is architecturally different from the other two. It builds a dynamic k-NN graph and uses edge convolutions on local neighborhoods, so it focuses more on local geometric relationships between points. In practice, DGCNN tends to land in a similar accuracy range as the other models, but it can help on classes where fine-grained part relationships are important. Even if its raw accuracy is similar, it gives us a different inductive bias compared to PointNet++ and PointMLP. That makes it useful as a complementary model rather than a strict replacement.
 
-- *Diagnostics*: compute a per-class confusion matrix and a targeted error breakdown. This will turn tuning from guesswork into more focused and deliberate fixes.
+Cross model comparison.
+Putting everything together, all three models reach high overall accuracy, but they differ in how they treat minority classes. PointNet++ with SSL is a strong baseline and benefits from pretraining, but its macro precision and macro F1 lag its accuracy, which means some classes are still underperforming. PointMLP gives us the best balance of the three: highest accuracy and noticeably stronger macro precision and macro F1, so it is the best single model if we care about both overall performance and fairness across classes. DGCNN adds diversity by focusing on local edges and is especially helpful for shapes where relative part positions matter more than global shape alone.
 
-- *Data/Features*: rebalance the dataset by oversampling or collecting more examples for rare classes. The will hopefully increase their representation, improve the per-class recall and macro accuracy, as well as leading to more consistent performance across different datasets.
+Next steps.
+Across all models, macro F1 is still several points below overall accuracy, so the main next step is to improve performance on minority and “difficult” classes rather than just chasing a small bump in accuracy. Concretely, we would like to
 
->This plan should narrow the generalization gap and bring per-class accuracy closer to the instance score, yielding a more reliable PointNet++ on sparse/light clouds.
+use class-weighted cross entropy or focal loss, and possibly oversample rare classes, to directly target macro precision and macro F1,
+
+strengthen geometric data augmentation (rotations, scaling, jitter, point dropout) so train and test distributions match better,
+
+explore simple ensembles or knowledge distillation that combine PointMLP with PointNet++ and DGCNN to leverage their different strengths, and
+
+run a more detailed per class confusion matrix analysis to see exactly which categories are driving the gaps in precision and F1.
+
+Overall, our results show that all three models are viable for 3D shape classification on this dataset, with PointMLP as the strongest single choice and PointNet++ and DGCNN providing useful complementary behavior for future improvements.
+
+
 """)
 
 # ======================
