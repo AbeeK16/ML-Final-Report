@@ -105,7 +105,7 @@ Results for second model here
 Results for third model here
 """)
 
-st.image("images/PointNet_Accuracy_Over_Training_Epochs.png", caption="Accuracy over Epochs")
+st.image("PointNet_Accuracy_Over_Training_Epochs.png", caption="Accuracy over Epochs")
 
 st.markdown("""
 All in all, the PointNet++ model is **solid but not stellar**. We are currently seeing ~0.99 train instance accuracy against the ~0.92 test instance accuracy (best ~0.929) with class accuracy ~0.90, which points to decent learning plus a modest generalization gap and likely class imbalance (where: instance > class). It is perfecetly usable; however, some classes are clearly underperfoming and later epochs do not improve on the earlier best, suggesting we are overfitting or under-augmenting for our lighter point clouds. (i.e., sparser samples with fewer points per object and more local noise, so the train distribution is denser than what we evaluate on).
@@ -131,13 +131,13 @@ st.markdown("""
 # GANTT CHART
 # ======================
 st.header("## Gantt Chart")
-st.image("images/gantt.jpeg", caption="Gantt Chart")
+st.image("gantt.jpeg", caption="Gantt Chart")
 
 # ======================
 # CONTRIBUTION TABLE
 # ======================
 st.header("## Contribution Table")
-st.image("images/contribution.jpg", caption="Contribution Table")
+st.image("contribution.jpg", caption="Contribution Table")
 
 # ======================
 # PROJECT GOALS
@@ -212,7 +212,7 @@ st.markdown("""
 
 `/classification_ScanObjectNN/`: Classification pipeline for the ScanObjectNN dataset.
 
-`/images/`: Images used for documentation, model visualization, and README assets.
+`/`: Images used for documentation, model visualization, and README assets.
 
 `/part_segmentation/`: Point-cloud part segmentation using ShapeNetPart.
 
